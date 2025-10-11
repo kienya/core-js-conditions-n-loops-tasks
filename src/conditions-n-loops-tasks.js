@@ -146,8 +146,15 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let isPalindromeStr = true;
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] !== str[str.length - 1 - i]) {
+      isPalindromeStr = false;
+      break;
+    }
+  }
+  return isPalindromeStr;
 }
 
 /**
@@ -287,6 +294,7 @@ function sortByAsc(/* arr */) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
+
 function shuffleChar(str, iterations) {
   if (iterations > 0) {
     const counter = iterations - 1;
