@@ -392,23 +392,26 @@ function sortByAsc(/* arr */) {
  */
 
 function shuffleChar(str, iterations) {
-  if (iterations > 0) {
-    const counter = iterations - 1;
+  let result = str;
+  let counter = iterations;
+  let iterationCount = 0;
+
+  while (counter > 0) {
     let even = '';
     let odd = '';
-
-    for (let i = 0; i < str.length; i += 1) {
-      if (i % 2 && i > 0) {
-        odd += str[i];
-      } else {
-        even += str[i];
-      }
+    for (let i = 0; i < result.length; i += 2) {
+      even += result[i];
+      odd += result[i + 1];
     }
-
-    return counter ? shuffleChar(even + odd, counter) : even + odd;
+    result = even + odd;
+    counter -= 1;
+    iterationCount += 1;
+    if (result === str) {
+      counter = iterations % iterationCount;
+    }
   }
 
-  return str;
+  return result;
 }
 
 /**
